@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rp-b1c1q1+_j30+x2+33h22e1=j1o$*=(*u=ogk^3fnfzfx^u$'
+SECRET_KEY = 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -118,5 +118,5 @@ STATIC_URL = '/static/'
 EMAIL_HOST = 'smtp.encuentralibre.com.ar'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'contacto@encuentralibre.com.ar'
-EMAIL_HOST_PASSWORD = 'yokapo123'
+EMAIL_HOST_PASSWORD = 
 EMAIL_USE_TLS = True
