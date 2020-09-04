@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% block titulo %}EncuentraLibre - Confirmar eliminación{% endblock titulo %}
+
+
+{% block body %}
+
+<div class="container">
+<form method="post">
+    {%  csrf_token %}
+    <div class="field">
+        <label class="label">¿Desea eliminar la búsqueda {{ object }}?</label>
+        <div class="control">
+        <button type="submit" class="button is-danger">Eliminar</button>
+        </div>
+    </div>
+</form>
+</div>
+
+{% endblock body %}

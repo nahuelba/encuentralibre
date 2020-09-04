@@ -1,0 +1,82 @@
+{% extends 'base.html' %} 
+{% block titulo %}EncuentraLibre - Resultados{% endblock titulo %}
+{% block body %}
+<section class="hero is-fullheight">
+    <div class="container">
+        <table class="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Resultados</th>
+                <th>Título</th>
+                <th>Precio</th>
+                <th>Link</th>
+                <th>Fecha de publicación encontrada</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+                {% for resultado in resultados %}
+                <tr>
+                  <td> {{ resultado.busqueda}}</td>
+                  <td> {{ resultado.titulo }}</td>
+                  <td> {{ resultado.precio }}</td>
+                  <td> <a href="{{ resultado.link }}" target="_blank">Link</a></td>
+                  <td> {{ resultado.fecha }}</td>
+                </tr> 
+                {% endfor %}
+    
+    
+            </tbody>
+        </table>
+
+        <!-----------Paginación---------->
+        <nav class="pagination" role="navigation" aria-label="pagination">
+          
+          {% if page_obj.has_previous %}
+            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Anterior</a>  
+          {% else %}
+            <a class="pagination-previous" disabled>Anterior</a>
+          {% endif %}
+
+          {% if page_obj.has_next %}
+          <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Siguiente</a>  
+          {% else %}
+          <a class="pagination-next" disabled>Siguiente</a>
+          {% endif %}
+          
+          
+          
+          <ul class="pagination-list">
+             <!------------ 
+            {% if paginator.num_pages > 10 %}
+              {% for i in range%}
+
+                <li>
+                  <a class="pagination-link" href="?page={{i}}" aria-current="page">{{i}}</a>
+                </li>
+
+              {% endfor %}
+              <li>
+                <span class="pagination-ellipsis">&hellip;</span>
+              </li>
+              <li>
+                <a class="pagination-link" href="?page={{paginator.num_pages}}">{{paginator.num_pages}}</a>
+              </li>
+            
+            {% else %}
+              {% for i in paginator.page_range %}
+            
+                <li>
+                  <a class="pagination-link {% if '?page={{i}}' in request.get_full_path %}is-current{% endif %}" href="?page={{i}}" aria-current="page">{{i}}</a>
+                </li>
+
+              {% endfor %}
+            {% endif %}
+            --------------->
+          </ul>
+          
+        </nav>
+        
+    </div>
+    </section>
+    {% endblock body %}

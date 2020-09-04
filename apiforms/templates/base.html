@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/ZxhyH7F/imageedit-1-3513262062.png" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    
+    <title>{% block titulo %}{% endblock titulo %}</title>
+
+</head>
+<body>
+  <!------------------------Navbar----------------->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'inicio' %}">
+        <img src="https://i.ibb.co/6vRvy2S/index.png"/>
+      </a>
+  
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+          // Add a click event on each of them
+          $navbarBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+
+              // Get the target from the "data-target" attribute
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+
+              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+
+            }); 
+          });
+        }
+
+        });
+    </script>
+  
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'inicio' %}">
+        Inicio
+      </a>
+
+      <a class="navbar-item" href="{% url 'Busquedas' %}">
+        Aplicación
+      </a>
+        <a class="navbar-item" href="{% url 'contacto' %}">
+          Contacto
+        </a>
+
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+
+          {% if request.user.is_authenticated %}
+            <strong class="mx-5">Hola {{ request.user.username }}</strong>
+            <a class="button is-light" href="{% url 'logout' %}">
+              Salir
+            </a>  
+          {% else %}
+            <a class="button is-primary" href="{% url 'usuarios:registrar_usuario' %}">
+              <strong>Registrarse</strong>
+            </a>
+            <a class="button is-light" href="{% url 'login' %}">
+              Ingresar
+            </a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+</nav>
+    
+    <div class="tabs is-centered is-boxed">
+        <ul>
+        {% with url_name=request.resolver_match.url_name %}
+          <li class="{% if url_name == 'Busquedas' %}is-active{% endif %}"><a href="{% url 'Busquedas' %}">Búsquedas</a></li>
+          <li class="{% if url_name == 'resultados' %}is-active{% endif %}"><a href="{% url 'resultados' %}">Resultados</a></li>
+        {% endwith %}
+        </ul>
+      </div>
+      <div id="wrap">
+        <div id="main">
+    {% block body %}
+    {% endblock body %}
+  </div>
+  
+</div>
+    <div id="footer">
+      <footer class="footer has-background-black">
+        <div class="content has-text-centered">
+          <p>
+            <strong>EncuentraLibre</strong> by <a href="mailto:nahuelbarreiro@gmail.com">Nahuel Barreiro</a>. Todos los Derechos Reservados.
+            </p>
+            <p style="font-style: oblique;">
+             La información de EncuentraLibre no está autorizada o verificada por Mercadolibre. Este sitio recopila información mediante su API. No somos partners oficiales de Mercadolibre.
+          </p>
+        </div>
+      </footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/ZxhyH7F/imageedit-1-3513262062.png" />
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'gestionBBDD/css/style.css' %}">
+    <title>EncuentraLibre - Registrar usuario</title>
+</head>
+<body>
+    
+
+<section class="hero is-primary is-fullheight">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="{% url 'inicio' %}">
+              Volver
+            </a>
+          </div>
+        </div>
+        </nav>
+
+
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+              
+            <form method="POST" class="box">
+                {% csrf_token %}
+
+              <div class="field">
+                <label class="label">Usuario</label>
+                <div class="control">
+                  {{ form.username }}
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  {{ form.email }}
+                </div>
+              </div>
+              
+              <div class="field">
+                <label class="label">Nombre</label>
+                <div class="control">
+                  {{ form.nombres }}
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Apellido</label>
+                <div class="control">
+                  {{ form.apellidos }}
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Ingrese una password</label>
+                <div class="control">
+                  {{ form.password1 }}
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Confirme la password</label>
+                <div class="control">
+                  {{ form.password2 }}
+                </div>
+              </div>
+              <!---------
+              <div class="field">
+                <label for="" class="checkbox">
+                  <input type="checkbox">
+                 Remember me
+                </label>
+              </div>--->
+              <div class="field is-grouped">
+                <p class="control">
+                  <button type="submit" class="button is-primary">
+                    Registrar
+                  </button>
+                </p>
+                <p class="control">
+                  <a href="{% url 'inicio' %}" class="button is-light">
+                    Cancelar
+                  </a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
