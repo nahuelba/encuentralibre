@@ -63,7 +63,7 @@ for usuario_id in usuarios_id:
             server = smtplib.SMTP("smtp.encuentralibre.com.ar", 587)#port
             server.ehlo()
             server.starttls()
-            server.login('aviso@encuentralibre.com.ar', 'yokapo123')
+            server.login('aviso@encuentralibre.com.ar', '')
             body = 'Se encontro una/unas publicación/nes: '+'\n' .join(publicaciones_mostrar)
             msg = MIMEText(body,'plain','utf-8')
             subject = 'Publicacion/es encontrada'
@@ -76,7 +76,7 @@ for usuario_id in usuarios_id:
             server.sendmail(From, to, txt)
             
         """user= 'encuentralibree@gmail.com'
-        password = 'yokapo123'
+        password = 
         Remitente='encuentralibree@gmail.com'
         destinitario= usuario_email[0]['email']
         asunto= 'Publicacion/es encontrada'
